@@ -6,43 +6,53 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:30:36 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/04 16:38:04 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/04 21:28:18 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main(void)
 {
 	{
 		std::cout << "\033[34mConstructing\033[0m" << std::endl;
 		Bureaucrat *a = new Bureaucrat();
+		Form *b = new Form();
 		std::cout << std::endl;
 		std::cout << "\033[34mTesting\033[0m" << std::endl;
 		std::cout << a;
-		a->incrementGrade();
-		std::cout << a;
-		a->decrementGrade();
-		std::cout << a;
+		std::cout << b;
+		b->beSigned(*a);
+		std::cout << b;
 		std::cout << std::endl;
 		std::cout << "\033[34mDeconstructing\033[0m" << std::endl;
 		delete a;
+		delete b;
 		std::cout << std::endl;
 	}
 	std::cout << "-------------------------------------------------------" << std::endl;
 	{
 		std::cout << "\033[34mConstructing\033[0m" << std::endl;
-		Bureaucrat *a = new Bureaucrat(1);
+		Bureaucrat *a = new Bureaucrat();
+		Form *b = new Form("Rent Contract", 140, 100);
 		std::cout << std::endl;
 		std::cout << "\033[34mTesting\033[0m" << std::endl;
 		std::cout << a;
-		a->decrementGrade();
-		std::cout << a;
-		a->incrementGrade();
-		std::cout << a;
+		std::cout << b;
+		try
+		{
+			b->beSigned(*a);
+		}
+		catch(Form::GradeTooLowException &e)
+		{
+
+		}
+		std::cout << b;
 		std::cout << std::endl;
 		std::cout << "\033[34mDeconstructing\033[0m" << std::endl;
 		delete a;
+		delete b;
 		std::cout << std::endl;
 	}
 	std::cout << "-------------------------------------------------------" << std::endl;
