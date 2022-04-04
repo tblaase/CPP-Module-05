@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:42:50 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/04 20:11:17 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/04 21:32:24 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ const std::string	Bureaucrat::getName(void)const
 {
 	return (this->_name);
 }
-const size_t	Bureaucrat::getGrade(void)const
+size_t	Bureaucrat::getGrade(void)const
 {
 	return (this->_grade);
 }
