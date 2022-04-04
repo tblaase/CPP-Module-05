@@ -6,12 +6,13 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:42:50 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/04 17:00:58 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/04 21:17:11 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
+// Here the try catch statements are used because it just makes sense
 
 // Constructors
 Bureaucrat::Bureaucrat(void): _name("default"), _grade(150)
@@ -126,15 +127,18 @@ void	Bureaucrat::decrementGrade(void)
 		" failed: " << e.what() << "\033[0m" << std::endl;
 	}
 }
+
 // Getter
 const std::string	Bureaucrat::getName(void)const
 {
 	return (this->_name);
 }
-size_t	Bureaucrat::getGrade(void)const
+
+const size_t	Bureaucrat::getGrade(void)const
 {
 	return (this->_grade);
 }
+
 // Setter
 void	Bureaucrat::setGrade(int grade)
 {

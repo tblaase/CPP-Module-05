@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:42:32 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/04 16:59:42 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/04 20:43:11 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ class Bureaucrat
 		void decrementGrade(void);
 	// Getter
 		const std::string getName(void)const;
-		size_t getGrade(void)const;
+		const size_t getGrade(void)const;
 
 	//Exceptions
 	class GradeTooLowException : public std::exception
