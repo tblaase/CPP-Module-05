@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:30:36 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/04 21:28:18 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/04 21:30:48 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main(void)
 		}
 		catch(Form::GradeTooLowException &e)
 		{
-
+			std::cerr << a->getName() << " was not able to sign " << b->getName() << "because " << e.what() << std::endl;
 		}
 		std::cout << b;
 		std::cout << std::endl;

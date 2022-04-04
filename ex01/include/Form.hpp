@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:43:07 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/04 21:15:28 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/04 21:32:56 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ class Form
 	// Getter
 		const std::string getName(void)const;
 		const std::string getIsSigned(void)const;
-		const size_t getSignGrade(void)const;
-		const size_t getExecGrade(void)const;
+		int getSignGrade(void)const;
+		int getExecGrade(void)const;
 
 	//Exceptions
 	class GradeTooLowException : public std::exception
