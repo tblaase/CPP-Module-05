@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:42:32 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/04 14:34:25 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/04 16:59:42 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,16 @@ class Bureaucrat
 	private:
 		const std::string _name;
 		size_t _grade;
+		// Setter
+		void setGrade(int grade);
 
 	public:
 	// Constructors
 		Bureaucrat();
-		Bureaucrat(const Bureaucrat &copy);
-		Bureaucrat(size_t grade);
+		Bureaucrat(const Bureaucrat &src);
+		Bureaucrat(int grade);
 		Bureaucrat(const std::string name);
-		Bureaucrat(const std::string name, size_t grade);
+		Bureaucrat(const std::string name, int grade);
 
 	// Deconstructors
 		~Bureaucrat();
@@ -45,8 +47,6 @@ class Bureaucrat
 	// Getter
 		const std::string getName(void)const;
 		size_t getGrade(void)const;
-	// Setter
-		void setGrade(size_t grade);
 
 	//Exceptions
 	class GradeTooLowException : public std::exception
@@ -64,3 +64,4 @@ class Bureaucrat
 
 // ostream Overload
 std::ostream	&operator<<(std::ostream &o, Bureaucrat *a);
+std::ostream	&operator<<(std::ostream &o, Bureaucrat a);

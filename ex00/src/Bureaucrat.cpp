@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:42:50 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/04 14:34:11 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/04 17:00:58 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,37 @@
 
 
 // Constructors
-Bureaucrat::Bureaucrat(): _name("default"), _grade(150)
+Bureaucrat::Bureaucrat(void): _name("default"), _grade(150)
 {
 	std::cout << "Bureaucrat Default Constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy)
+Bureaucrat::Bureaucrat(const Bureaucrat &src): _name(src.getName() + "_copy")
 {
-	std::cout << "Bureaucrat Copy Constructor called" << std::endl;
-	*this = copy;
+	std::cout << "Bureaucrat Copy Constructor called to copy " << src.getName() <<
+	" into " << this->getName() << std::endl;
+	*this = src;
 }
 
-Bureaucrat::Bureaucrat(const size_t grade): _name("default")
+Bureaucrat::Bureaucrat(int grade): _name("default")
 {
+	std::cout << "Bureaucrat Constructor called for " << this->getName() <<
+	" with grade of " << grade << std::endl;
 	try
 	{
 		this->setGrade(grade);
 	}
 	catch(GradeTooHighException &e)
 	{
-		std::cerr << "\033[33mConstructing " << this->getName() << " failed: " << e.what() << std::endl <<
+		std::cerr << "\033[33mConstructing " << this->getName() <<
+		" failed: " << e.what() << std::endl <<
 		"Grade now set to 150" << "\033[0m" << std::endl;
 		this->setGrade(150);
 	}
 	catch(GradeTooLowException &e)
 	{
-		std::cerr << "\033[33mConstructing " << this->getName() << " failed: " << e.what() << std::endl <<
+		std::cerr << "\033[33mConstructing " << this->getName() <<
+		" failed: " << e.what() << std::endl <<
 		"Grade now set to 150" << "\033[0m" << std::endl;
 		this->setGrade(150);
 	}
@@ -47,23 +52,29 @@ Bureaucrat::Bureaucrat(const size_t grade): _name("default")
 
 Bureaucrat::Bureaucrat(const std::string name): _name(name), _grade(150)
 {
+	std::cout << "Bureaucrat Constructor called for " << this->getName() <<
+	" with grade of " << this->getGrade() << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, const size_t grade): _name(name)
+Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name)
 {
+	std::cout << "Bureaucrat Constructor called for " << this->getName() <<
+	" with grade of " << grade << std::endl;
 	try
 	{
 		this->setGrade(grade);
 	}
 	catch(GradeTooHighException &e)
 	{
-		std::cerr << "\033[33mConstructing " << this->getName() << " failed: " << e.what() << std::endl <<
+		std::cerr << "\033[33mConstructing " << this->getName() <<
+		" failed: " << e.what() << std::endl <<
 		"Grade now set to 150" << "\033[0m" << std::endl;
 		this->setGrade(150);
 	}
 	catch(GradeTooLowException &e)
 	{
-		std::cerr << "\033[33mConstructing " << this->getName() << " failed: " << e.what() << std::endl <<
+		std::cerr << "\033[33mConstructing " << this->getName() <<
+		" failed: " << e.what() << std::endl <<
 		"Grade now set to 150" << "\033[0m" << std::endl;
 		this->setGrade(150);
 	}
@@ -92,11 +103,13 @@ void	Bureaucrat::incrementGrade(void)
 {
 	try
 	{
+		std::cout << "Trying to increment grade of " << this->getName() << std::endl;
 		this->setGrade(this->_grade + 1);
 	}
 	catch(GradeTooHighException &e)
 	{
-		std::cerr << "\033[33mIncrementing grade of " << this->getName() << " failed: " << e.what() << "\033[0m" << std::endl;
+		std::cerr << "\033[33mIncrementing grade of " << this->getName() <<
+		" failed: " << e.what() << "\033[0m" << std::endl;
 	}
 }
 
@@ -104,11 +117,13 @@ void	Bureaucrat::decrementGrade(void)
 {
 	try
 	{
+		std::cout << "Trying to decrement grade of " << this->getName() << std::endl;
 		this->setGrade(this->_grade - 1);
 	}
 	catch(GradeTooLowException &e)
 	{
-		std::cerr << "\033[33mDecrementing grade of " << this->getName() << " failed: " << e.what() << "\033[0m" << std::endl;
+		std::cerr << "\033[33mDecrementing grade of " << this->getName() <<
+		" failed: " << e.what() << "\033[0m" << std::endl;
 	}
 }
 // Getter
@@ -121,7 +136,7 @@ size_t	Bureaucrat::getGrade(void)const
 	return (this->_grade);
 }
 // Setter
-void	Bureaucrat::setGrade(size_t grade)
+void	Bureaucrat::setGrade(int grade)
 {
 	if (grade > 150)
 		throw Bureaucrat::GradeTooHighException();
@@ -146,5 +161,11 @@ const char *Bureaucrat::GradeTooHighException::what(void) const throw()
 std::ostream	&operator<<(std::ostream &o, Bureaucrat *a)
 {
 	o << "Bureaucrat " << a->getName() << " has the grade " << a->getGrade() << std::endl;
+	return (o);
+}
+
+std::ostream	&operator<<(std::ostream &o, Bureaucrat a)
+{
+	o << "Bureaucrat " << a.getName() << " has the grade " << a.getGrade() << std::endl;
 	return (o);
 }
