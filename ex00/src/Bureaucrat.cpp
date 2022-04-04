@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:42:50 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/04 17:00:58 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/04 20:11:17 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,24 @@ Bureaucrat::Bureaucrat(int grade): _name("default")
 {
 	std::cout << "Bureaucrat Constructor called for " << this->getName() <<
 	" with grade of " << grade << std::endl;
-	try
-	{
+	// try
+	// {
 		this->setGrade(grade);
-	}
-	catch(GradeTooHighException &e)
-	{
-		std::cerr << "\033[33mConstructing " << this->getName() <<
-		" failed: " << e.what() << std::endl <<
-		"Grade now set to 150" << "\033[0m" << std::endl;
-		this->setGrade(150);
-	}
-	catch(GradeTooLowException &e)
-	{
-		std::cerr << "\033[33mConstructing " << this->getName() <<
-		" failed: " << e.what() << std::endl <<
-		"Grade now set to 150" << "\033[0m" << std::endl;
-		this->setGrade(150);
-	}
+	// }
+	// catch(GradeTooHighException &e)
+	// {
+	// 	std::cerr << "\033[33mConstructing " << this->getName() <<
+	// 	" failed: " << e.what() << std::endl <<
+	// 	"Grade now set to 150" << "\033[0m" << std::endl;
+	// 	this->setGrade(150);
+	// }
+	// catch(GradeTooLowException &e)
+	// {
+	// 	std::cerr << "\033[33mConstructing " << this->getName() <<
+	// 	" failed: " << e.what() << std::endl <<
+	// 	"Grade now set to 150" << "\033[0m" << std::endl;
+	// 	this->setGrade(150);
+	// }
 }
 
 Bureaucrat::Bureaucrat(const std::string name): _name(name), _grade(150)
@@ -60,24 +60,24 @@ Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name)
 {
 	std::cout << "Bureaucrat Constructor called for " << this->getName() <<
 	" with grade of " << grade << std::endl;
-	try
-	{
+	// try
+	// {
 		this->setGrade(grade);
-	}
-	catch(GradeTooHighException &e)
-	{
-		std::cerr << "\033[33mConstructing " << this->getName() <<
-		" failed: " << e.what() << std::endl <<
-		"Grade now set to 150" << "\033[0m" << std::endl;
-		this->setGrade(150);
-	}
-	catch(GradeTooLowException &e)
-	{
-		std::cerr << "\033[33mConstructing " << this->getName() <<
-		" failed: " << e.what() << std::endl <<
-		"Grade now set to 150" << "\033[0m" << std::endl;
-		this->setGrade(150);
-	}
+	// }
+	// catch(GradeTooHighException &e)
+	// {
+	// 	std::cerr << "\033[33mConstructing " << this->getName() <<
+	// 	" failed: " << e.what() << std::endl <<
+	// 	"Grade now set to 150" << "\033[0m" << std::endl;
+	// 	this->setGrade(150);
+	// }
+	// catch(GradeTooLowException &e)
+	// {
+	// 	std::cerr << "\033[33mConstructing " << this->getName() <<
+	// 	" failed: " << e.what() << std::endl <<
+	// 	"Grade now set to 150" << "\033[0m" << std::endl;
+	// 	this->setGrade(150);
+	// }
 
 }
 
@@ -101,37 +101,37 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
 // Public Methods
 void	Bureaucrat::incrementGrade(void)
 {
-	try
-	{
+	// try
+	// {
 		std::cout << "Trying to increment grade of " << this->getName() << std::endl;
 		this->setGrade(this->_grade + 1);
-	}
-	catch(GradeTooHighException &e)
-	{
-		std::cerr << "\033[33mIncrementing grade of " << this->getName() <<
-		" failed: " << e.what() << "\033[0m" << std::endl;
-	}
+	// }
+	// catch(GradeTooHighException &e)
+	// {
+	// 	std::cerr << "\033[33mIncrementing grade of " << this->getName() <<
+	// 	" failed: " << e.what() << "\033[0m" << std::endl;
+	// }
 }
 
 void	Bureaucrat::decrementGrade(void)
 {
-	try
-	{
+	// try
+	// {
 		std::cout << "Trying to decrement grade of " << this->getName() << std::endl;
 		this->setGrade(this->_grade - 1);
-	}
-	catch(GradeTooLowException &e)
-	{
-		std::cerr << "\033[33mDecrementing grade of " << this->getName() <<
-		" failed: " << e.what() << "\033[0m" << std::endl;
-	}
+	// }
+	// catch(GradeTooLowException &e)
+	// {
+	// 	std::cerr << "\033[33mDecrementing grade of " << this->getName() <<
+	// 	" failed: " << e.what() << "\033[0m" << std::endl;
+	// }
 }
 // Getter
 const std::string	Bureaucrat::getName(void)const
 {
 	return (this->_name);
 }
-size_t	Bureaucrat::getGrade(void)const
+const size_t	Bureaucrat::getGrade(void)const
 {
 	return (this->_grade);
 }
