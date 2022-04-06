@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:43:07 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/04 21:32:56 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/06 14:18:46 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include "Bureaucrat.hpp"
 
 // classes
+
+class Bureaucrat;
 
 class Form
 {

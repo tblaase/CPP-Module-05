@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:52:02 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/04 21:34:06 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/06 14:59:01 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,13 @@ void Form::beSigned(Bureaucrat &signer)
 {
 	if ((int)signer.getGrade() > this->getSignGrade())
 		throw(Form::GradeTooLowException());
-	else
+	else if (this->getIsSigned() == "✗ false")
+	{
 		this->_is_signed = true;
+		std::cout << this->getName() << " Form was signed by " << signer.getName() << std::endl;
+	}
+	else
+		std::cout << this->getName() << " Form is already signed" << std::endl;
 }
 
 // Getter
@@ -93,9 +98,9 @@ const std::string	Form::getName(void)const
 const std::string	Form::getIsSigned(void)const
 {
 	if (this->_is_signed)
-		return ("true");
+		return ("✓ true");
 	else
-		return ("false");
+		return ("✗ false");
 }
 
 int	Form::getSignGrade(void)const
@@ -110,13 +115,24 @@ int	Form::getExecGrade(void)const
 
 // Setter
 
+// Exceptions
+const char *Form::GradeTooLowException::what(void) const throw()
+{
+	return ("Grade too low");
+};
+
+const char *Form::GradeTooHighException::what(void) const throw()
+{
+	return ("Grade too high");
+};
+
 // ostream Overload
 std::ostream	&operator<<(std::ostream &o, Form *a)
 {
 	o << "Form " << a->getName() <<
-	"\n\tsign-grade: " << a->getSignGrade() <<
-	"\n\texecution-grade: " << a->getExecGrade() <<
-	"\n\tis signed: " << a->getIsSigned() <<
+	":\n\tsign-grade:\t" << a->getSignGrade() <<
+	"\n\texec-grade:\t" << a->getExecGrade() <<
+	"\n\tis signed:\t" << a->getIsSigned() <<
 	std::endl;
 	return (o);
 }
@@ -124,9 +140,9 @@ std::ostream	&operator<<(std::ostream &o, Form *a)
 std::ostream	&operator<<(std::ostream &o, Form a)
 {
 	o << "Form " << a.getName() <<
-	"\n\tsign-grade: " << a.getSignGrade() <<
-	"\n\texecution-grade: " << a.getExecGrade() <<
-	"\n\tis signed: " << a.getIsSigned() <<
+	":\n\tsign-grade:\t" << a.getSignGrade() <<
+	"\n\texec-grade:\t" << a.getExecGrade() <<
+	"\n\tis signed:\t" << a.getIsSigned() <<
 	std::endl;
 	return (o);
 }

@@ -6,18 +6,20 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:42:50 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/04 21:32:01 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/06 14:57:26 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 // Here the try catch statements are used because it just makes sense
 
 // Constructors
 Bureaucrat::Bureaucrat(void): _name("default"), _grade(150)
 {
-	std::cout << "Bureaucrat Default Constructor called" << std::endl;
+	std::cout << "Bureaucrat Default Constructor called for " << this->getName() <<
+	" with grade of " << this->getGrade() << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &src): _name(src.getName() + "_copy")
@@ -35,14 +37,14 @@ Bureaucrat::Bureaucrat(int grade): _name("default")
 	{
 		this->setGrade(grade);
 	}
-	catch(GradeTooHighException &e)
+	catch(Bureaucrat::GradeTooHighException &e)
 	{
 		std::cerr << "\033[33mConstructing " << this->getName() <<
 		" failed: " << e.what() << std::endl <<
 		"Grade now set to 150" << "\033[0m" << std::endl;
 		this->setGrade(150);
 	}
-	catch(GradeTooLowException &e)
+	catch(Bureaucrat::GradeTooLowException &e)
 	{
 		std::cerr << "\033[33mConstructing " << this->getName() <<
 		" failed: " << e.what() << std::endl <<
@@ -65,14 +67,14 @@ Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name)
 	{
 		this->setGrade(grade);
 	}
-	catch(GradeTooHighException &e)
+	catch(Bureaucrat::GradeTooHighException &e)
 	{
 		std::cerr << "\033[33mConstructing " << this->getName() <<
 		" failed: " << e.what() << std::endl <<
 		"Grade now set to 150" << "\033[0m" << std::endl;
 		this->setGrade(150);
 	}
-	catch(GradeTooLowException &e)
+	catch(Bureaucrat::GradeTooLowException &e)
 	{
 		std::cerr << "\033[33mConstructing " << this->getName() <<
 		" failed: " << e.what() << std::endl <<
@@ -85,7 +87,7 @@ Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name)
 // Deconstructors
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Bureaucrat Deconstructor called" << std::endl;
+	std::cout << "Bureaucrat Deconstructor for " << this->getName() << " called" << std::endl;
 }
 
 // Overloaded Operators
@@ -107,11 +109,16 @@ void	Bureaucrat::incrementGrade(void)
 		std::cout << "Trying to increment grade of " << this->getName() << std::endl;
 		this->setGrade(this->_grade + 1);
 	}
-	catch(GradeTooHighException &e)
+	catch(Bureaucrat::GradeTooHighException &e)
 	{
 		std::cerr << "\033[33mIncrementing grade of " << this->getName() <<
 		" failed: " << e.what() << "\033[0m" << std::endl;
 	}
+}
+
+void	Bureaucrat::signForm(Form &form)
+{
+	form.beSigned(*this);
 }
 
 void	Bureaucrat::decrementGrade(void)
@@ -121,7 +128,7 @@ void	Bureaucrat::decrementGrade(void)
 		std::cout << "Trying to decrement grade of " << this->getName() << std::endl;
 		this->setGrade(this->_grade - 1);
 	}
-	catch(GradeTooLowException &e)
+	catch(Bureaucrat::GradeTooLowException &e)
 	{
 		std::cerr << "\033[33mDecrementing grade of " << this->getName() <<
 		" failed: " << e.what() << "\033[0m" << std::endl;

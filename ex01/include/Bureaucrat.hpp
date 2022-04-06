@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:42:32 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/04 21:31:49 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/06 14:23:36 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@
 // Includes
 #include <string>
 #include <iostream>
+#include "Form.hpp"
 
 // classes
+
+class Form;
 
 class Bureaucrat
 {
@@ -44,6 +47,7 @@ class Bureaucrat
 	// Public Methods
 		void incrementGrade(void);
 		void decrementGrade(void);
+		void signForm(Form &form);
 	// Getter
 		const std::string getName(void)const;
 		size_t getGrade(void)const;
