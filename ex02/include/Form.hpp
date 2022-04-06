@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:43:07 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 14:18:46 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:18:39 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ class Bureaucrat;
 
 class Form
 {
-	private:
+	protected:
 		const std::string _name;
 		bool _is_signed;
 		const int _sign_grade;
 		const int _exec_grade;
 
-	public:
-	// Constructors
+		// Constructors
 		Form(void);
 		Form(const Form &src);
 		Form(int sign_grade, int exec_grade);
@@ -39,19 +38,13 @@ class Form
 		Form(const std::string name, int sign_grade, int exec_grade);
 
 	// Deconstructors
-		~Form();
+		virtual ~Form();
 
 	// Overloaded Operators
 		Form &operator=(const Form &src);
 
-	// Public Methods
-		void beSigned(Bureaucrat &signer);
-	// Getter
-		const std::string getName(void)const;
-		const std::string getIsSigned(void)const;
-		int getSignGrade(void)const;
-		int getExecGrade(void)const;
 
+	public:
 	//Exceptions
 	class GradeTooLowException : public std::exception
 	{
@@ -64,8 +57,17 @@ class Form
 	public:
 		virtual const char *what() const throw();
 	};
+	// Public Methods
+		void beSigned(Bureaucrat const &signer);
+		virtual void execute(Bureaucrat const &executor)const = 0;
+	// Getter
+		const std::string getName(void)const;
+		const std::string getIsSigned(void)const;
+		bool getIsSignedBool(void)const;
+		int getSignGrade(void)const;
+		int getExecGrade(void)const;
 };
 
 // ostream Overload
 std::ostream	&operator<<(std::ostream &o, Form *a);
-std::ostream	&operator<<(std::ostream &o, Form a);
+// std::ostream	&operator<<(std::ostream &o, Form a);

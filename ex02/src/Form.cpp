@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:52:02 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 14:59:01 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:18:35 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ Form &Form::operator=(const Form &src)
 }
 
 // Public Methods
-void Form::beSigned(Bureaucrat &signer)
+void Form::beSigned(Bureaucrat const &signer)
 {
 	if ((int)signer.getGrade() > this->getSignGrade())
 		throw(Form::GradeTooLowException());
@@ -103,6 +103,11 @@ const std::string	Form::getIsSigned(void)const
 		return ("✗ false");
 }
 
+bool	Form::getIsSignedBool(void)const
+{
+	return (this->_is_signed);
+}
+
 int	Form::getSignGrade(void)const
 {
 	return (this->_sign_grade);
@@ -112,6 +117,11 @@ int	Form::getExecGrade(void)const
 {
 	return (this->_exec_grade);
 }
+
+// void Form::execute(Bureaucrat const &executor)const
+// {
+// 	(void)executor;
+// }
 
 // Setter
 
@@ -137,12 +147,12 @@ std::ostream	&operator<<(std::ostream &o, Form *a)
 	return (o);
 }
 
-std::ostream	&operator<<(std::ostream &o, Form a)
-{
-	o << "Form " << a.getName() <<
-	":\n\tsign-grade:\t" << a.getSignGrade() <<
-	"\n\texec-grade:\t" << a.getExecGrade() <<
-	"\n\tis signed:\t" << a.getIsSigned() <<
-	std::endl;
-	return (o);
-}
+// std::ostream	&operator<<(std::ostream &o, Form a)
+// {
+// 	o << "Form " << a.getName() <<
+// 	":\n\tsign-grade:\t" << a.getSignGrade() <<
+// 	"\n\texec-grade:\t" << a.getExecGrade() <<
+// 	"\n\tis signed:\t" << a.getIsSigned() <<
+// 	std::endl;
+// 	return (o);
+// }

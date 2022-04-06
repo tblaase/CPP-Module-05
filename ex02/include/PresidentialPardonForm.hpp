@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:27:24 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 15:27:46 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:14:01 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@
 // Includes
 #include <string>
 #include <iostream>
+#include "Form.hpp"
 
 // classes
 
-class PresidentialPardonForm
+class From;
+
+class PresidentialPardonForm: public Form
 {
 	private:
 		// Private Members
@@ -36,9 +39,13 @@ class PresidentialPardonForm
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &src);
 
 	// Public Methods
-
+		void execute(Bureaucrat const &executor)const;
 	// Getter
 
 	// Setter
 
 };
+
+// // ostream Overload
+std::ostream	&operator<<(std::ostream &o, PresidentialPardonForm *a);
+std::ostream	&operator<<(std::ostream &o, PresidentialPardonForm a);
