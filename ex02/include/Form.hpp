@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:43:07 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 16:18:39 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/06 19:06:11 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,19 @@ class Form
 
 		// Constructors
 		Form(void);
-		Form(const Form &src);
 		Form(int sign_grade, int exec_grade);
 		Form(const std::string name);
 		Form(const std::string name, int sign_grade, int exec_grade);
+
+	public:
+	// Copy Constructor
+		Form(const Form &src);
 
 	// Deconstructors
 		virtual ~Form();
 
 	// Overloaded Operators
 		Form &operator=(const Form &src);
-
-
-	public:
 	//Exceptions
 	class GradeTooLowException : public std::exception
 	{
@@ -70,4 +70,3 @@ class Form
 
 // ostream Overload
 std::ostream	&operator<<(std::ostream &o, Form *a);
-// std::ostream	&operator<<(std::ostream &o, Form a);

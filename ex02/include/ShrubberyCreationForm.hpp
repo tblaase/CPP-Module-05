@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:27:53 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 15:42:05 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/06 19:54:25 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,27 @@
 // Includes
 #include <string>
 #include <iostream>
+#include <fstream>
+#include "Bureaucrat.hpp"
 #include "Form.hpp"
 
 // classes
 
-class Form;
+class Bureaucrat;
+
+class From;
 
 class ShrubberyCreationForm: public Form
 {
 	private:
-		// Private Members
-
+		const std::string _target;
+	// moved the default Constructor to private because subject asks for orthodox canonical form
+	// but also asks for the Forms to only have one constructor that takes one argument
+		ShrubberyCreationForm(void);
 	public:
 	// Constructors
-		ShrubberyCreationForm();
-		ShrubberyCreationForm(const ShrubberyCreationForm &src);
+		ShrubberyCreationForm(std::string target);
+		ShrubberyCreationForm(ShrubberyCreationForm &src);
 
 	// Deconstructors
 		~ShrubberyCreationForm();
@@ -39,9 +45,13 @@ class ShrubberyCreationForm: public Form
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &src);
 
 	// Public Methods
-
+		void execute(Bureaucrat const &executor)const;
 	// Getter
-
+		std::string getTarget(void)const;
 	// Setter
 
 };
+
+// // ostream Overload
+std::ostream	&operator<<(std::ostream &o, ShrubberyCreationForm *a);
+// std::ostream	&operator<<(std::ostream &o, ShrubberyCreationForm a);

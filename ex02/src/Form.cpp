@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:52:02 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 16:18:35 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/06 19:06:19 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,10 @@ void Form::beSigned(Bureaucrat const &signer)
 	else if (this->getIsSigned() == "✗ false")
 	{
 		this->_is_signed = true;
-		std::cout << this->getName() << " Form was signed by " << signer.getName() << std::endl;
+		std::cout << this->getName() << " was signed by " << signer.getName() << std::endl;
 	}
 	else
-		std::cout << this->getName() << " Form is already signed" << std::endl;
+		std::cout << this->getName() << " is already signed" << std::endl;
 }
 
 // Getter
@@ -118,10 +118,10 @@ int	Form::getExecGrade(void)const
 	return (this->_exec_grade);
 }
 
-// void Form::execute(Bureaucrat const &executor)const
-// {
-// 	(void)executor;
-// }
+void Form::execute(Bureaucrat const &executor)const
+{
+	(void)executor;
+}
 
 // Setter
 
@@ -146,13 +146,3 @@ std::ostream	&operator<<(std::ostream &o, Form *a)
 	std::endl;
 	return (o);
 }
-
-// std::ostream	&operator<<(std::ostream &o, Form a)
-// {
-// 	o << "Form " << a.getName() <<
-// 	":\n\tsign-grade:\t" << a.getSignGrade() <<
-// 	"\n\texec-grade:\t" << a.getExecGrade() <<
-// 	"\n\tis signed:\t" << a.getIsSigned() <<
-// 	std::endl;
-// 	return (o);
-// }

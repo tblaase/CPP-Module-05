@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:42:50 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 14:57:26 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/06 19:55:35 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,10 @@ void	Bureaucrat::incrementGrade(void)
 
 void	Bureaucrat::signForm(Form &form)
 {
-	form.beSigned(*this);
+	if ((int)this->getGrade() > form.getSignGrade())
+		throw (Bureaucrat::GradeTooLowException());
+	else
+		form.beSigned(*this);
 }
 
 void	Bureaucrat::decrementGrade(void)
@@ -133,6 +136,14 @@ void	Bureaucrat::decrementGrade(void)
 		std::cerr << "\033[33mDecrementing grade of " << this->getName() <<
 		" failed: " << e.what() << "\033[0m" << std::endl;
 	}
+}
+
+void	Bureaucrat::executeForm(Form &form)const
+{
+	if ((int)this->getGrade() > form.getExecGrade())
+		throw (Bureaucrat::GradeTooLowException());
+	else
+		form.beSigned(*this);
 }
 
 // Getter
@@ -171,12 +182,12 @@ const char *Bureaucrat::GradeTooHighException::what(void) const throw()
 // ostream Overload
 std::ostream	&operator<<(std::ostream &o, Bureaucrat *a)
 {
-	o << "Bureaucrat " << a->getName() << " has the grade " << a->getGrade() << std::endl;
+	o << "Bureaucrat " << a->getName() << ":\n\tgrade: " << a->getGrade() << std::endl;
 	return (o);
 }
 
-std::ostream	&operator<<(std::ostream &o, Bureaucrat a)
-{
-	o << "Bureaucrat " << a.getName() << " has the grade " << a.getGrade() << std::endl;
-	return (o);
-}
+// std::ostream	&operator<<(std::ostream &o, Bureaucrat a)
+// {
+// 	o << "Bureaucrat " << a.getName() << " has the grade " << a.getGrade() << std::endl;
+// 	return (o);
+// }

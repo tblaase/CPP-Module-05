@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:42:32 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 14:23:36 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/06 19:54:33 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ class Bureaucrat
 		void incrementGrade(void);
 		void decrementGrade(void);
 		void signForm(Form &form);
+		void executeForm(Form &form)const;
 	// Getter
 		const std::string getName(void)const;
 		size_t getGrade(void)const;
@@ -68,4 +69,4 @@ class Bureaucrat
 
 // ostream Overload
 std::ostream	&operator<<(std::ostream &o, Bureaucrat *a);
-std::ostream	&operator<<(std::ostream &o, Bureaucrat a);
+// std::ostream	&operator<<(std::ostream &o, Bureaucrat a);
