@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:30:36 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 11:59:15 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/06 13:43:04 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int main(void)
 		std::cout << std::endl;
 		std::cout << "\033[34mTesting\033[0m" << std::endl;
 		std::cout << a;
-		try // in my opinion would make more sense if the try catch blocks would have been inside the class itself already
+		try // in my opinion would make more sense if the try-catch blocks would have been inside the class itself already
 		{
 		a->incrementGrade();
 		}
-		catch(Bureaucrat::GradeTooHighException &e) // the try catch blocks inside the class are commented out but fully functional
+		catch(Bureaucrat::GradeTooHighException &e) // the try-catch blocks inside the class are commented out but fully functional
 		{
 			std::cerr << "\033[33mIncrementing grade of " << a->getName() <<
 			" failed: " << e.what() << "\033[0m" << std::endl;
@@ -47,6 +47,7 @@ int main(void)
 	}
 	std::cout << "-------------------------------------------------------" << std::endl;
 	{
+		std::cout << std::endl;
 		std::cout << "\033[34mConstructing\033[0m" << std::endl;
 		Bureaucrat *a = new Bureaucrat(1);
 		std::cout << std::endl;
@@ -79,6 +80,7 @@ int main(void)
 	}
 	std::cout << "-------------------------------------------------------" << std::endl;
 	{
+		std::cout << std::endl;
 		std::cout << "\033[34mConstructing\033[0m" << std::endl;
 		Bureaucrat *a = NULL;
 		try
@@ -96,6 +98,7 @@ int main(void)
 	}
 	std::cout << "-------------------------------------------------------" << std::endl;
 	{
+		std::cout << std::endl;
 		std::cout << "\033[34mConstructing\033[0m" << std::endl;
 		Bureaucrat *a = NULL;
 		try
