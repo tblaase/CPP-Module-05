@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:30:36 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/04 20:25:47 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/06 11:59:15 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,29 +80,35 @@ int main(void)
 	std::cout << "-------------------------------------------------------" << std::endl;
 	{
 		std::cout << "\033[34mConstructing\033[0m" << std::endl;
+		Bureaucrat *a = NULL;
 		try
 		{
-			Bureaucrat *a = new Bureaucrat(0);
+			a = new Bureaucrat(0);
 		}
 		catch(Bureaucrat::GradeTooLowException &e)
 		{
 			std::cerr << "\033[33mConstructing default failed: " <<
-			e.what() << std::endl << std::endl;
+			e.what() << "\033[0m" << std::endl;
 		}
+		if (a != NULL)
+			delete a;
 		std::cout << std::endl;
 	}
 	std::cout << "-------------------------------------------------------" << std::endl;
 	{
 		std::cout << "\033[34mConstructing\033[0m" << std::endl;
+		Bureaucrat *a = NULL;
 		try
 		{
-			Bureaucrat *a = new Bureaucrat(160);
+			a = new Bureaucrat(160);
 		}
 		catch(Bureaucrat::GradeTooHighException &e)
 		{
 			std::cerr << "\033[33mConstructing default failed: " <<
-			e.what() << std::endl << std::endl;
+			e.what() << "\033[0m" << std::endl;
 		}
+		if (a != NULL)
+			delete a;
 		std::cout << std::endl;
 	}
 	std::cout << "-------------------------------------------------------" << std::endl;
