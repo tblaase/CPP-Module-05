@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:30:36 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 13:43:04 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/06 14:46:15 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,11 @@ int main(void)
 			e.what() << "\033[0m" << std::endl;
 		}
 		if (a != NULL)
+		{
+			std::cout << std::endl;
+			std::cout << "\033[34mDeconstructing b\033[0m" << std::endl;
 			delete a;
+		}
 		std::cout << std::endl;
 	}
 	std::cout << "-------------------------------------------------------" << std::endl;
@@ -101,6 +105,7 @@ int main(void)
 		std::cout << std::endl;
 		std::cout << "\033[34mConstructing\033[0m" << std::endl;
 		Bureaucrat *a = NULL;
+
 		try
 		{
 			a = new Bureaucrat(160);
@@ -110,8 +115,13 @@ int main(void)
 			std::cerr << "\033[33mConstructing default failed: " <<
 			e.what() << "\033[0m" << std::endl;
 		}
+
 		if (a != NULL)
+		{
+			std::cout << std::endl;
+			std::cout << "\033[34mDeconstructing b\033[0m" << std::endl;
 			delete a;
+		}
 		std::cout << std::endl;
 	}
 	std::cout << "-------------------------------------------------------" << std::endl;
