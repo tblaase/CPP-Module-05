@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:30:36 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 19:53:35 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/07 10:10:46 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main(void)
 			b->beSigned(*a);
 			// b->execute(*a);
 		}
-		catch(Form::GradeTooLowException &e)
+		catch(Bureaucrat::GradeTooLowException &e)
 		{
 			std::cerr << "\033[33m" << a->getName() << " was not able to sign " << b->getName() << ": " << e.what() << "\033[0m" << std::endl;
 		}
@@ -75,7 +75,7 @@ int main(void)
 			c->beSigned(*a);
 			// a->signForm(*c);
 		}
-		catch(Form::GradeTooLowException &e)
+		catch(Bureaucrat::GradeTooLowException &e)
 		{
 			std::cerr << "\033[33m" << a->getName() << " was not able to sign the Form " << c->getName() << ": " << e.what() << "\033[0m" << std::endl;
 		}
@@ -109,7 +109,7 @@ int main(void)
 			c->execute(*a);
 			// a.executeForm(*c);
 		}
-		catch(Form::GradeTooLowException &e)
+		catch(Bureaucrat::GradeTooLowException &e)
 		{
 			std::cerr << "\033[33m" << a->getName() << " was not able to execute the Form " << c->getName() << ": " << e.what() << "\033[0m" << std::endl;
 		}
@@ -121,7 +121,7 @@ int main(void)
 			c->execute(*b);
 			// b.executeForm(*c);
 		}
-		catch(Form::GradeTooLowException &e)
+		catch(Bureaucrat::GradeTooLowException &e)
 		{
 			std::cerr << "\033[33m" << b->getName() << " was not able to execute the Form " << c->getName() << ": " << e.what() << "\033[0m" << std::endl;
 		}
@@ -150,8 +150,8 @@ int main(void)
 		b->beSigned(*a);
 		a->signForm(*c);
 		b->execute(*a);
-		// a->executeForm(*c);
-		c->execute(*a);
+		a->executeForm(*c);
+		// c->execute(*a);
 		std::cout << std::endl;
 
 		std::cout << "\033[34mDeconstructing\033[0m" << std::endl;
@@ -166,7 +166,7 @@ int main(void)
 
 		std::cout << "\033[34mConstructing\033[0m" << std::endl;
 		Bureaucrat *a = new Bureaucrat("Emperor", 1);
-		RobotomyRequestForm *b = new RobotomyRequestForm("bender");
+		RobotomyRequestForm *b = new RobotomyRequestForm("Bender");
 		ShrubberyCreationForm *c = new ShrubberyCreationForm("christmas");
 		std::cout << std::endl;
 
@@ -176,7 +176,8 @@ int main(void)
 		std::cout << c;
 		b->beSigned(*a);
 		a->signForm(*c);
-		b->execute(*a);
+		for (int i= 0; i < 10; i++)
+			b->execute(*a);
 		// a->executeForm(*c);
 		c->execute(*a);
 		std::cout << std::endl;

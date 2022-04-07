@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:42:50 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 19:55:35 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/07 10:07:01 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ void	Bureaucrat::executeForm(Form &form)const
 	if ((int)this->getGrade() > form.getExecGrade())
 		throw (Bureaucrat::GradeTooLowException());
 	else
-		form.beSigned(*this);
+		form.execute(*this);
 }
 
 // Getter

@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:52:02 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 19:06:19 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/07 10:09:44 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ Form &Form::operator=(const Form &src)
 void Form::beSigned(Bureaucrat const &signer)
 {
 	if ((int)signer.getGrade() > this->getSignGrade())
-		throw(Form::GradeTooLowException());
+		throw(Bureaucrat::GradeTooLowException());
 	else if (this->getIsSigned() == "✗ false")
 	{
 		this->_is_signed = true;

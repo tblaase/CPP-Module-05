@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:28:00 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 19:53:48 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/07 10:08:48 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 void	PresidentialPardonForm::execute(Bureaucrat const &executor)const
 {
 	if ((int)executor.getGrade() > this->getExecGrade())
-		throw (Form::GradeTooLowException());
+		throw (Bureaucrat::GradeTooLowException());
 	else if (this->getIsSignedBool() == false)
 		std::cout << this->getName() << " needs to be signed before executing it" << std::endl;
 	else
