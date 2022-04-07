@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:52:02 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 14:59:01 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/07 15:18:57 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ Form::Form(int sign_grade, int exec_grade): _name("default"), _is_signed(false),
 	const int i = this->getSignGrade();
 	const int j = this->getExecGrade();
 	if (i > 150 || j > 150)
-		throw(Form::GradeTooHighException());
-	else if( i < 1 || j < 1)
 		throw(Form::GradeTooLowException());
+	else if( i < 1 || j < 1)
+		throw(Form::GradeTooHighException());
 }
 
 Form::Form(const std::string name): _name(name), _is_signed(false), _sign_grade(150), _exec_grade(150)
@@ -53,9 +53,9 @@ Form::Form(const std::string name, int sign_grade, int exec_grade): _name(name),
 	const int i = this->getSignGrade();
 	const int j = this->getExecGrade();
 	if (i > 150 || j > 150)
-		throw(Form::GradeTooHighException());
-	else if( i < 1 || j < 1)
 		throw(Form::GradeTooLowException());
+	else if( i < 1 || j < 1)
+		throw(Form::GradeTooHighException());
 }
 
 // Deconstructors
@@ -79,7 +79,7 @@ Form &Form::operator=(const Form &src)
 void Form::beSigned(Bureaucrat &signer)
 {
 	if ((int)signer.getGrade() > this->getSignGrade())
-		throw(Form::GradeTooLowException());
+		throw(Bureaucrat::GradeTooLowException());
 	else if (this->getIsSigned() == "✗ false")
 	{
 		this->_is_signed = true;

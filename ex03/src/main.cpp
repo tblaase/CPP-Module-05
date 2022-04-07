@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:30:36 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/07 11:26:58 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/07 15:34:06 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ int main(void)
 		Bureaucrat *b = new Bureaucrat("CEO", 1);
 		Intern *z = new Intern();
 		Form *c = z->makeForm("PresidentialPardonForm", "some dude");
-		// Form *d = new Form(*c);
-		// Form *d = new Form("Rent Contract", 140, 100); // you are not able to construct an abstract class here
 		std::cout << std::endl;
 
 		std::cout << "\033[34mTesting\033[0m" << std::endl;
@@ -142,33 +140,6 @@ int main(void)
 		delete z;
 		std::cout << std::endl;
 	}
-	// std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-	// {
-	// 	std::cout << std::endl;
-
-	// 	std::cout << "\033[34mConstructing\033[0m" << std::endl;
-	// 	Bureaucrat *a = new Bureaucrat("Emperor", 1);
-	// 	PresidentialPardonForm *b = new PresidentialPardonForm("this other dude");
-	// 	PresidentialPardonForm *c = new PresidentialPardonForm(*b);
-	// 	std::cout << std::endl;
-
-	// 	std::cout << "\033[34mTesting\033[0m" << std::endl;
-	// 	std::cout << a;
-	// 	std::cout << b;
-	// 	std::cout << c;
-	// 	b->beSigned(*a);
-	// 	a->signForm(*c);
-	// 	b->execute(*a);
-	// 	a->executeForm(*c);
-	// 	// c->execute(*a);
-	// 	std::cout << std::endl;
-
-	// 	std::cout << "\033[34mDeconstructing\033[0m" << std::endl;
-	// 	delete a;
-	// 	delete b;
-	// 	delete c;
-	// 	std::cout << std::endl;
-	// }
 	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
 	{
 		std::cout << std::endl;

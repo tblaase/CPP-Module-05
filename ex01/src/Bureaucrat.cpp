@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:42:50 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 14:57:26 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/07 15:07:19 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ Bureaucrat::Bureaucrat(int grade): _name("default")
 	{
 		std::cerr << "\033[33mConstructing " << this->getName() <<
 		" failed: " << e.what() << std::endl <<
-		"Grade now set to 150" << "\033[0m" << std::endl;
-		this->setGrade(150);
+		"Grade now set to 1" << "\033[0m" << std::endl;
+		this->setGrade(1);
 	}
 	catch(Bureaucrat::GradeTooLowException &e)
 	{
@@ -71,8 +71,8 @@ Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name)
 	{
 		std::cerr << "\033[33mConstructing " << this->getName() <<
 		" failed: " << e.what() << std::endl <<
-		"Grade now set to 150" << "\033[0m" << std::endl;
-		this->setGrade(150);
+		"Grade now set to 1" << "\033[0m" << std::endl;
+		this->setGrade(1);
 	}
 	catch(Bureaucrat::GradeTooLowException &e)
 	{
@@ -107,7 +107,7 @@ void	Bureaucrat::incrementGrade(void)
 	try
 	{
 		std::cout << "Trying to increment grade of " << this->getName() << std::endl;
-		this->setGrade(this->_grade + 1);
+		this->setGrade(this->_grade - 1);
 	}
 	catch(Bureaucrat::GradeTooHighException &e)
 	{
@@ -116,23 +116,23 @@ void	Bureaucrat::incrementGrade(void)
 	}
 }
 
-void	Bureaucrat::signForm(Form &form)
-{
-	form.beSigned(*this);
-}
-
 void	Bureaucrat::decrementGrade(void)
 {
 	try
 	{
 		std::cout << "Trying to decrement grade of " << this->getName() << std::endl;
-		this->setGrade(this->_grade - 1);
+		this->setGrade(this->_grade + 1);
 	}
 	catch(Bureaucrat::GradeTooLowException &e)
 	{
 		std::cerr << "\033[33mDecrementing grade of " << this->getName() <<
 		" failed: " << e.what() << "\033[0m" << std::endl;
 	}
+}
+
+void	Bureaucrat::signForm(Form &form)
+{
+	form.beSigned(*this);
 }
 
 // Getter
@@ -150,9 +150,9 @@ size_t	Bureaucrat::getGrade(void)const
 void	Bureaucrat::setGrade(int grade)
 {
 	if (grade > 150)
-		throw Bureaucrat::GradeTooHighException();
-	else if (grade < 1)
 		throw Bureaucrat::GradeTooLowException();
+	else if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
 	else
 		this->_grade = grade;
 }

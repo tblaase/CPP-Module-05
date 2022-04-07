@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:30:36 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 15:06:08 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/07 15:18:06 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(void)
 		{
 			b->beSigned(*a);
 		}
-		catch(Form::GradeTooLowException &e)
+		catch(Bureaucrat::GradeTooLowException &e)
 		{
 			std::cerr << a->getName() << " was not able to sign " << b->getName() << ": " << e.what() << std::endl;
 		}
@@ -60,10 +60,10 @@ int main(void)
 		// Assistant signs the Form
 		try
 		{
-			c->beSigned(*a);
-			// a->signForm(*c);
+			// c->beSigned(*a);
+			a->signForm(*c);
 		}
-		catch(Form::GradeTooLowException &e)
+		catch(Bureaucrat::GradeTooLowException &e)
 		{
 			std::cerr << "\033[33m" << a->getName() << " was not able to sign the Form " << c->getName() << ": " << e.what() << "\033[0m" << std::endl;
 		}
@@ -75,7 +75,7 @@ int main(void)
 			c->beSigned(*b);
 			// b->signForm(*c);
 		}
-		catch(Form::GradeTooLowException &e)
+		catch(Bureaucrat::GradeTooLowException &e)
 		{
 			std::cerr << "\033[33m" << b->getName() << " was not able to sign the Form " << c->getName() << ": " << e.what() << "\033[0m" << std::endl;
 		}
@@ -103,7 +103,7 @@ int main(void)
 		{
 			a = new Form(160, 145);
 		}
-		catch (Form::GradeTooHighException &e)
+		catch (Form::GradeTooLowException &e)
 		{
 			std::cerr << "\033[33mConstructing default failed: " <<
 			e.what() << "\033[0m" << std::endl;
@@ -114,7 +114,7 @@ int main(void)
 		{
 			a = new Form(145, 160);
 		}
-		catch (Form::GradeTooHighException &e)
+		catch (Form::GradeTooLowException &e)
 		{
 			std::cerr << "\033[33mConstructing default failed: " <<
 			e.what() << "\033[0m" << std::endl;
@@ -125,7 +125,7 @@ int main(void)
 		{
 			a = new Form(-15, 145);
 		}
-		catch (Form::GradeTooLowException &e)
+		catch (Form::GradeTooHighException &e)
 		{
 			std::cerr << "\033[33mConstructing default failed: " <<
 			e.what() << "\033[0m" << std::endl;
@@ -136,7 +136,7 @@ int main(void)
 		{
 			a = new Form(145, -15);
 		}
-		catch (Form::GradeTooLowException &e)
+		catch (Form::GradeTooHighException &e)
 		{
 			std::cerr << "\033[33mConstructing default failed: " <<
 			e.what() << "\033[0m" << std::endl;
