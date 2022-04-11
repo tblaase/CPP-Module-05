@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:27:53 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 19:54:25 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 11:57:40 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,3 @@ class ShrubberyCreationForm: public Form
 
 // // ostream Overload
 std::ostream	&operator<<(std::ostream &o, ShrubberyCreationForm *a);
-// std::ostream	&operator<<(std::ostream &o, ShrubberyCreationForm a);

@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:27:48 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 19:54:28 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 11:57:35 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,3 @@ class RobotomyRequestForm: public Form
 
 // // ostream Overload
 std::ostream	&operator<<(std::ostream &o, RobotomyRequestForm *a);
-// std::ostream	&operator<<(std::ostream &o, RobotomyRequestForm a);

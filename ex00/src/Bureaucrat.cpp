@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:42:50 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/07 14:58:26 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 11:51:20 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,12 +161,6 @@ const char *Bureaucrat::GradeTooHighException::what(void) const throw()
 // ostream Overload
 std::ostream	&operator<<(std::ostream &o, Bureaucrat *a)
 {
-	o << "Bureaucrat " << a->getName() << " has the grade " << a->getGrade() << std::endl;
-	return (o);
-}
-
-std::ostream	&operator<<(std::ostream &o, Bureaucrat a)
-{
-	o << "Bureaucrat " << a.getName() << " has the grade " << a.getGrade() << std::endl;
+	o << "Bureaucrat " << a->getName() << ":\n\tgrade: " << a->getGrade() << std::endl;
 	return (o);
 }

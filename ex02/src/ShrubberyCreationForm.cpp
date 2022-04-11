@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:28:20 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/07 15:20:22 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 11:53:26 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,3 @@ std::ostream	&operator<<(std::ostream &o, ShrubberyCreationForm *a)
 	return (o);
 }
 
-// std::ostream	&operator<<(std::ostream &o, ShrubberyCreationForm a)
-// {
-// 	o << "Form " << a.getName() <<
-// 	":\n\tsign-grade:\t" << a.getSignGrade() <<
-// 	"\n\texec-grade:\t" << a.getExecGrade() <<
-// 	"\n\tis signed:\t" << a.getIsSigned() <<
-// 	std::endl;
-// 	return (o);
-// }

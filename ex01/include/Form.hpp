@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:43:07 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 14:18:46 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 11:57:18 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,3 @@ class Form
 
 // ostream Overload
 std::ostream	&operator<<(std::ostream &o, Form *a);
-std::ostream	&operator<<(std::ostream &o, Form a);

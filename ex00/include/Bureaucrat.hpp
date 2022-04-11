@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:42:32 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/04 21:32:11 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 11:48:01 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,3 @@ class Bureaucrat
 
 // ostream Overload
 std::ostream	&operator<<(std::ostream &o, Bureaucrat *a);
-std::ostream	&operator<<(std::ostream &o, Bureaucrat a);
