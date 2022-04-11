@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:28:20 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/11 12:53:51 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 17:09:19 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(): Form("ShrubberyCreationForm", 14
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target): Form("ShrubberyCreationForm", 145, 137), _target(target)
 {
-	std::cout << "ShrubberyCreationForm Constructor for taget " << this->getTarget() << " called" << std::endl;
+	std::cout << "ShrubberyCreationForm Constructor for target " << this->getTarget() << " called" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &src): Form("ShrubberyCreationForm", 145, 137), _target(src.getTarget())

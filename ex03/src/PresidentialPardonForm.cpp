@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:28:00 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/11 12:54:07 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 17:09:06 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ PresidentialPardonForm::PresidentialPardonForm(): Form("PresidentialPardonForm",
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target): Form("PresidentialPardonForm", 25, 5), _target(target)
 {
-	std::cout << "PresidentialPardonForm Constructor for taget " << this->getTarget() << " called" << std::endl;
+	std::cout << "PresidentialPardonForm Constructor for target " << this->getTarget() << " called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &src): Form("PresidentialPardonForm", 25, 5), _target(src.getTarget())

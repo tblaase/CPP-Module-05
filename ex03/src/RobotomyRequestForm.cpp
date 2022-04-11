@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:28:09 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/11 12:54:15 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 17:08:58 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ RobotomyRequestForm::RobotomyRequestForm(): Form("RobotomyRequestForm", 72, 45),
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target): Form("RobotomyRequestForm", 72, 45), _target(target)
 {
-	std::cout << "RobotomyRequestForm Constructor for taget " << this->getTarget() << " called" << std::endl;
+	std::cout << "RobotomyRequestForm Constructor for target " << this->getTarget() << " called" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &src): Form("RobotomyRequestForm", 72, 45), _target(src.getTarget())
