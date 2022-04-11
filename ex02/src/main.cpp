@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:30:36 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/07 11:32:02 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 12:58:49 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,14 @@ int main(void)
 		std::cout << std::endl;
 
 		// Try to execute before signing
-		c->execute(*b);
+		try
+		{
+			c->execute(*b);
+		}
+		catch (Form::FormNotSignedException &e)
+		{
+			std::cerr << "\033[33m" << a->getName() << " was not able to execute the Form " << c->getName() << ": " << e.what() << "\033[0m" << std::endl;
+		}
 		std::cout << std::endl;
 		// Assistant signs the Form
 		try

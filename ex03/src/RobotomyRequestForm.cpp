@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:28:09 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/11 11:55:38 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 12:54:15 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor)const
 	if ((int)executor.getGrade() > this->getExecGrade())
 		throw (Bureaucrat::GradeTooLowException());
 	else if (this->getIsSignedBool() == false)
-		std::cout << this->getName() << " needs to be signed before executing it" << std::endl;
+		throw (Form::FormNotSignedException());
 	else if (robot_fail++ % 2)
 		std::cout << "BRRRRRRRRRRRRRR\n" << this->getTarget() << " was robotomized" << std::endl;
 	else

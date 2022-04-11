@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:30:36 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/07 15:34:06 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 13:00:22 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ int main(void)
 		std::cout << "\033[34mConstructing\033[0m" << std::endl;
 		Bureaucrat *a = new Bureaucrat("Assistant", 145);
 		Bureaucrat *b = new Bureaucrat("CEO", 1);
-		Intern *z = new Intern();
-		Form *c = z->makeForm("PresidentialPardonForm", "some dude");
+		Form *c = new PresidentialPardonForm("some dude");
+		// Form *d = new Form(*c);
+		// Form *d = new Form("Rent Contract", 140, 100); // you are not able to construct an abstract class here
 		std::cout << std::endl;
 
 		std::cout << "\033[34mTesting\033[0m" << std::endl;
@@ -73,7 +74,14 @@ int main(void)
 		std::cout << std::endl;
 
 		// Try to execute before signing
-		c->execute(*b);
+		try
+		{
+			c->execute(*b);
+		}
+		catch (Form::FormNotSignedException &e)
+		{
+			std::cerr << "\033[33m" << a->getName() << " was not able to execute the Form " << c->getName() << ": " << e.what() << "\033[0m" << std::endl;
+		}
 		std::cout << std::endl;
 		// Assistant signs the Form
 		try
@@ -137,7 +145,6 @@ int main(void)
 		delete a;
 		delete b;
 		delete c;
-		delete z;
 		std::cout << std::endl;
 	}
 	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;

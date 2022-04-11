@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:52:02 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/07 15:14:07 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 12:51:01 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void Form::beSigned(Bureaucrat const &signer)
 {
 	if ((int)signer.getGrade() > this->getSignGrade())
 		throw(Bureaucrat::GradeTooLowException());
-	else if (this->getIsSigned() == "✗ false")
+	else if (this->getIsSignedBool() == false)
 	{
 		this->_is_signed = true;
 		std::cout << this->getName() << " was signed by " << signer.getName() << std::endl;
@@ -134,6 +134,11 @@ const char *Form::GradeTooLowException::what(void) const throw()
 const char *Form::GradeTooHighException::what(void) const throw()
 {
 	return ("Grade too high");
+};
+
+const char *Form::FormNotSignedException::what(void) const throw()
+{
+	return ("Form needs to be signed before executing");
 };
 
 // ostream Overload

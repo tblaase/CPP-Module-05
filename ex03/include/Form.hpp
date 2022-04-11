@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:43:07 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/06 19:06:11 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 12:51:15 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ class Form
 	public:
 		virtual const char *what() const throw();
 	};
+
+	class FormNotSignedException : public std::exception
+	{
+	public:
+		virtual const char *what() const throw();
+	};
+
 	// Public Methods
 		void beSigned(Bureaucrat const &signer);
 		virtual void execute(Bureaucrat const &executor)const = 0;

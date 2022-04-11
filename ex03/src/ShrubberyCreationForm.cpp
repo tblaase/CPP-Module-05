@@ -6,7 +6,7 @@
 /*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:28:20 by tblaase           #+#    #+#             */
-/*   Updated: 2022/04/11 11:55:49 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/04/11 12:54:21 by tblaase          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor)const
 	if ((int)executor.getGrade() > this->getExecGrade())
 		throw (Form::GradeTooLowException());
 	else if (this->getIsSignedBool() == false)
-		std::cout << this->getName() << " needs to be signed before executing it" << std::endl;
+		throw (Form::FormNotSignedException());
 	else
 	{
 		std::ofstream outfile (this->getTarget().append("_shrubbery").c_str());
