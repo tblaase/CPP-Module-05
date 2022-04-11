@@ -4,6 +4,8 @@ CXX			=	c++
 
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
+SHRUBBERY	=	$(shell find . -name '*_shrubbery')
+
 #directories
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
@@ -66,6 +68,11 @@ fclean: clean
 	rm -f $(NAME); \
 	echo "$(BLUE)Deleting $(NAME) from /ex06...$(RESET)"; else \
 	echo "No Executable to remove from /ex06."; \
+	fi;
+	@if [ -f "$(SHRUBBERY)" ]; then \
+	rm -f $(SHRUBBERY); \
+	echo "$(BLUE)Deleting $(SHRUBBERY) from /ex02...$(RESET)"; else \
+	echo "No _shrubbery to remove from /ex02."; \
 	fi;
 
 #re rule
